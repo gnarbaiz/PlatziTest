@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="platzi.gnarbaiz.testapp.domain.model.CharacterEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/view_header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--<ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0.3"
+            android:contentDescription="@string/app_name"
+            app:imageUrl="@{item.image}"
+            app:isSmallerImage="@{false}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_logo" />-->
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="?actionBarSize"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="@string/go_back"
+            android:focusable="true"
+            android:padding="@dimen/dimen_8dp"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintBottom_toTopOf="@id/view_contents"
+            app:layout_constraintEnd_toStartOf="@id/tv_header_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btn_fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="@string/favourite"
+            android:focusable="true"
+            android:padding="@dimen/dimen_8dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/view_contents"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_header_title"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_header_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            android:maxLines="1"
+            android:text="@{item.name}"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textColor="@color/planePrimaryTextColor"
+            app:layout_constraintBottom_toBottomOf="@id/btn_back"
+            app:layout_constraintEnd_toStartOf="@id/btn_fav"
+            app:layout_constraintStart_toEndOf="@id/btn_back"
+            app:layout_constraintTop_toTopOf="@id/btn_back"
+            tools:text="@string/app_name" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view_contents"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="@dimen/dimen_16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_back">
+
+            <ImageView
+                android:id="@+id/profPic"
+                android:layout_width="@dimen/dimen_250dp"
+                android:layout_height="@dimen/dimen_250dp"
+                android:contentDescription="@string/app_name"
+                android:transitionName="@{item.image}"
+                app:imageUrl="@{item.image}"
+                app:isSmallerImage="@{true}"
+                app:layout_collapseMode="parallax"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_logo" />
+
+            <View
+                android:id="@+id/view_line"
+                android:layout_width="0dp"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:background="@color/planeSecondaryTextColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profPic" />
+
+            <TextView
+                android:id="@+id/tv_name_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:text="@string/label_name"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="@color/planeSecondaryTextColor"
+                app:layout_constraintEnd_toStartOf="@id/tv_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_line"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="Name" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@{item.name}"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="@color/planePrimaryTextColor"
+                app:layout_constraintBottom_toBottomOf="@id/tv_name_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_name_label"
+                app:layout_constraintTop_toTopOf="@id/tv_name_label"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="Harry Potter" />
+
+            <TextView
+                android:id="@+id/tv_date_of_birth_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/label_date_of_birth"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="@color/planeSecondaryTextColor"
+                app:layout_constraintEnd_toStartOf="@id/tv_date_of_birth"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_name"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="Date Of Birth" />
+
+            <TextView
+                android:id="@+id/tv_date_of_birth"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@{item.dateOfBirth}"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="@color/planePrimaryTextColor"
+                app:layout_constraintBottom_toBottomOf="@id/tv_date_of_birth_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_date_of_birth_label"
+                app:layout_constraintTop_toTopOf="@id/tv_date_of_birth_label"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="31-07-1980" />
+
+            <TextView
+                android:id="@+id/tv_gender_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/label_gender"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="@color/planeSecondaryTextColor"
+                app:layout_constraintBottom_toTopOf="@id/tv_status"
+                app:layout_constraintEnd_toStartOf="@id/tv_gender"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_date_of_birth"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="Gender" />
+
+            <TextView
+                android:id="@+id/tv_gender"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@{item.gender}"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="@color/planePrimaryTextColor"
+                app:layout_constraintBottom_toBottomOf="@id/tv_gender_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_gender_label"
+                app:layout_constraintTop_toTopOf="@id/tv_gender_label"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="Male" />
+
+            <TextView
+                android:id="@+id/tv_status_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/label_status"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="@color/planeSecondaryTextColor"
+                app:layout_constraintBottom_toTopOf="@id/tv_ancestry_label"
+                app:layout_constraintEnd_toStartOf="@id/tv_status"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_gender"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="Status" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@{item.alive ? @string/label_status_alive:@string/label_status_dead}"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="@color/planePrimaryTextColor"
+                app:layout_constraintBottom_toBottomOf="@id/tv_status_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_status_label"
+                app:layout_constraintTop_toTopOf="@id/tv_status_label"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="Alive" />
+
+            <TextView
+                android:id="@+id/tv_ancestry_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/label_ancestry"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="@color/planeSecondaryTextColor"
+                app:layout_constraintBottom_toTopOf="@id/tv_patronus"
+                app:layout_constraintEnd_toStartOf="@id/tv_ancestry"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_status"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="Ancestry" />
+
+            <TextView
+                android:id="@+id/tv_ancestry"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@{item.ancestry}"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="@color/planePrimaryTextColor"
+                app:layout_constraintBottom_toBottomOf="@id/tv_ancestry_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_ancestry_label"
+                app:layout_constraintTop_toTopOf="@id/tv_ancestry_label"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="half-blood" />
+
+            <TextView
+                android:id="@+id/tv_patronus_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/label_patronus"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="@color/planeSecondaryTextColor"
+                app:layout_constraintBottom_toTopOf="@id/tv_is_student"
+                app:layout_constraintEnd_toStartOf="@id/tv_patronus"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_ancestry"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="Patronus" />
+
+            <TextView
+                android:id="@+id/tv_patronus"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@{item.patronus}"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="@color/planePrimaryTextColor"
+                app:layout_constraintBottom_toBottomOf="@id/tv_patronus_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_patronus_label"
+                app:layout_constraintTop_toTopOf="@id/tv_patronus_label"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="stag" />
+
+            <TextView
+                android:id="@+id/tv_is_student_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/label_is_student"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="@color/planeSecondaryTextColor"
+                app:layout_constraintBottom_toTopOf="@id/tv_is_staff"
+                app:layout_constraintEnd_toStartOf="@id/tv_is_student"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_patronus"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="Is Hogwarts Student?" />
+
+            <TextView
+                android:id="@+id/tv_is_student"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@{item.hogwartsStudent ? @string/yes:@string/no}"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="@color/planePrimaryTextColor"
+                app:layout_constraintBottom_toBottomOf="@id/tv_is_student_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_is_student_label"
+                app:layout_constraintTop_toTopOf="@id/tv_is_student_label"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="Yes" />
+
+            <TextView
+                android:id="@+id/tv_is_staff_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/label_is_staff"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="@color/planeSecondaryTextColor"
+                app:layout_constraintBottom_toTopOf="@id/tv_played_by"
+                app:layout_constraintEnd_toStartOf="@id/tv_is_staff"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_is_student"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="@string/label_is_staff" />
+
+            <TextView
+                android:id="@+id/tv_is_staff"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@{item.hogwartsStaff ? @string/yes:@string/no}"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="@color/planePrimaryTextColor"
+                app:layout_constraintBottom_toBottomOf="@id/tv_is_staff_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_is_staff_label"
+                app:layout_constraintTop_toTopOf="@id/tv_is_staff_label"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="@string/no" />
+
+            <TextView
+                android:id="@+id/tv_played_by_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/label_played_by"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="@color/planeSecondaryTextColor"
+                app:layout_constraintEnd_toStartOf="@id/tv_played_by"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_is_staff"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="Played by" />
+
+            <TextView
+                android:id="@+id/tv_played_by"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@{item.actor}"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:textColor="@color/planePrimaryTextColor"
+                app:layout_constraintBottom_toBottomOf="@id/tv_played_by_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_played_by_label"
+                app:layout_constraintTop_toTopOf="@id/tv_played_by_label"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="Daniel Radcliffe" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
